@@ -57,13 +57,13 @@ Gather data on submarines from all nations, including:
 **Requirement:**<br>
 Analyze data to determine the geographical areas where the majority of submarines were sunk during World War II. This analysis should include identifying and visualizing the exact locations where submarines were sunk and clustering these locations to highlight the highest-risk zones.
 
-**Identify Locations:** <br>
+- **Identify Locations:** <br>
 Gather information on the exact coordinates (latitude and longitude) of where submarines were sunk.<br>
-**Cluster Analysis:** 
+- **Cluster Analysis:** 
 <br>Perform a clustering analysis to group nearby sinking sites and identify high-intensity zones.<br>
-**Risk Zones:**<br> 
+- **Risk Zones:**<br> 
 Visualize these high-intensity zones on a map to clearly display where the greatest risks for submarines were located.<br>
-**Trend Analysis:**<br> 
+- **Trend Analysis:**<br> 
 Analyze if any trends can be identified over time, showing shifts in submarine sinking patterns or risks based on different phases of the war.
 
 ### Target Audience:
