@@ -27,7 +27,7 @@ The goal of this analysis is to develop a timeline that displays the number of U
 
 ### **Analysis of Submarine Performance Trends**
 
-The goal of this analysis is to identify trends among submarines from different nations in order to understand which countries experienced higher or lower loss rates. Analyse which u-boat class was most effective with its submarine operations.
+The goal of this analysis is to identify trends among submarines from different classes in order to understand which class experienced higher or lower loss rates. Analyse which u-boat class was most effective with its submarine operations.
 
 **Requirements:**<br>
 Gather data on submarines from all nations, including:
