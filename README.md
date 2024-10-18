@@ -1,15 +1,6 @@
 dataset: https://www.kaggle.com/datasets/cormac42/ww2-u-boats
 
-
-- What type of u-boat was most effective to sink warships/merchant ships?
-- What year produced the most effective u-boats?
-- How many u-boats had the same fate?
-- Which u-boat served longest in the navy?
-- What type of u-boat was mostly stricken during WW2?
-- Which type of u-boat had biggest survival rate?
-
-
-
+[Business Requirements](#business-requirements)
 
 # Business Requirements
 
@@ -38,8 +29,7 @@ The goal of this analysis is to develop a timeline that displays the number of U
 
 The goal of this analysis is to identify trends among submarines from different nations in order to understand which countries experienced higher or lower loss rates. Analyse which country was most effective with its submarine operations.
 
-**Requirements:**
-<br>Data Collection:<br>
+**Requirements:**<br>
 Gather data on submarines from all nations, including:
 - Number of submarines deployed.
 - Number of vessel sunk per nation.
@@ -50,9 +40,7 @@ Gather data on submarines from all nations, including:
 **Success rate:** The ratio of vessels sunk to the total number of submarines deployed for each nation.
 <hr>
 
-#### Extra (if there´s time)
-
-### Identify Where Most Submarines Were Sunk
+### **Identify Where Most Submarines Were Sunk**
 
 **Requirement:**<br>
 Analyze data to determine the geographical areas where the majority of submarines were sunk during World War II. This analysis should include identifying and visualizing the exact locations where submarines were sunk and clustering these locations to highlight the highest-risk zones.
@@ -65,6 +53,19 @@ Gather information on the exact coordinates (latitude and longitude) of where su
 Visualize these high-intensity zones on a map to clearly display where the greatest risks for submarines were located.<br>
 - **Trend Analysis:**<br> 
 Analyze if any trends can be identified over time, showing shifts in submarine sinking patterns or risks based on different phases of the war.
+<hr>
+
+### **Reporting and Visualization for the General Public**
+Provide a simple and engaging visualization for a broader audience interested in World War II maritime history. The visualizations should enhance public knowledge and interest in the historical significance of submarine operations and their impacts during the war.<br>
+**Requirement:**<br>
+Develop interactive dashboards and reports to visualize key insights from submarine analyses, including operational performance, losses, and geographical trends. The dashboards should be user-friendly and designed for a non-technical audience.
+
+**Objectives:**<br>
+- **Interactive Dashboards:** <br>Create intuitive dashboards that allow users to explore data related to submarine operations, including filters for different time periods, submarine classes, and geographical areas.<br>
+- **Data Visualization:**<br> Utilize charts, maps, and graphs to effectively present data on submarine performance, losses, and risk zones in a visually appealing manner.<br>
+- **Accessibility:**<br> Ensure that the dashboards are designed to be accessible to individuals with varying levels of technical expertise, making the information approachable and informative for all users.<br>
+<hr>
 
 ### Target Audience:
-All these will be used by researchers, historians, and others interested in naval history and warfare to understand the effectiveness of U-boats during their operations in WW2.
+All these analyses will be used by researchers, historians, and others interested in naval history and warfare to understand the effectiveness of U-boats during their operations in WW2.
+<hr>
