@@ -25,19 +25,19 @@ The goal of this analysis is to develop a timeline that displays the number of U
 - Develop a timeline visualization that shows the trend of U-boat losses over the course of the war.
 <hr>
 
-### **Analysis of National Submarine Performance Trends**
+### **Analysis of Submarine Performance Trends**
 
-The goal of this analysis is to identify trends among submarines from different nations in order to understand which countries experienced higher or lower loss rates. Analyse which country was most effective with its submarine operations.
+The goal of this analysis is to identify trends among submarines from different nations in order to understand which countries experienced higher or lower loss rates. Analyse which u-boat class was most effective with its submarine operations.
 
 **Requirements:**<br>
 Gather data on submarines from all nations, including:
 - Number of submarines deployed.
-- Number of vessel sunk per nation.
+- Number of vessel sunk by type of u-boat.
 - Number of submarines lost or damaged.
 
 **Perform a comparative analysis to calculate:**<br>
 **Loss rate:** The ratio of submarines lost or damaged to the total number of submarines commissioned for each nation.<br>
-**Success rate:** The ratio of vessels sunk to the total number of submarines deployed for each nation.
+**Success rate:** The ratio of vessels sunk to the total number of submarines deployed for each class.
 <hr>
 
 ### **Identify Where Most Submarines Were Sunk**
