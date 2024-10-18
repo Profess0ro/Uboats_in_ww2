@@ -10,3 +10,11 @@ dataset: https://www.kaggle.com/datasets/cormac42/ww2-u-boats
 
 User interaction
 - If you created a type of u-boat in a year, what would be the expected outcome during it´s serving time? (mean value)
+
+
+# Business Requirements
+
+### Operational efficiency 
+Analyze every u-boats operational efficiency during it´s serving time in the water. This will be investigated by checking tonnage and boats sunk.
+**Purpose:** 
+Give scientists and other people that are interested an understanding on how succesful some u-boatclasses was in their operations with focus on merchant and warships.
