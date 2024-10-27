@@ -1,4 +1,4 @@
-dataset: https://www.kaggle.com/datasets/cormac42/ww2-u-boats
+datasets: https://www.kaggle.com/datasets/cormac42/ww2-u-boats
 
 [Business Requirements](#business-requirements)
 
