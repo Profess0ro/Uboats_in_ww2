@@ -4,13 +4,13 @@ datasets: https://www.kaggle.com/datasets/cormac42/ww2-u-boats
 
 # Hypotheses
 
-**1. The model that was built the most of, was it most effective during it´s time on duty?**
-By calculating the days served and damage done by every model of uboat, I can analyse if they built most of the most effective model and use days served as a measuring of operating efficiency.
-**2. Did the uboats that last until the end of the war be more effective than the ones that sunk during the war?**
-Since Germany surrender at the beginning of May 1945, I can divide the uboats in 2 different categories (one for those who met their fate before April 1945 and another for those who met their fate after April 1945) and then see if the most effective submarines survived the war.
-**3. Did the german loose more or less of their uboats after D-Day?**
-By calculating the uboats build and the ones they lost by each month, I can see the percentage of their uboat fleet by each month. Did they loose more of their fleet before or after D-Day?
-**4. Which area was the most dangerous for the german uboats? was there any time of the war that was effecting this area?**
+**1. The model that was built the most of, was it most effective during it´s time on duty?** <br>
+By calculating the days served and damage done by every model of uboat, I can analyse if they built most of the most effective model and use days served as a measuring of operating efficiency.<br><br>
+**2. Did the uboats that last until the end of the war be more effective than the ones that sunk during the war?** <br>
+Since Germany surrender at the beginning of May 1945, I can divide the uboats in 2 different categories (one for those who met their fate before April 1945 and another for those who met their fate after April 1945) and then see if the most effective submarines survived the war.<br><br>
+**3. Did the german loose more or less of their uboats after D-Day?** <br>
+By calculating the uboats build and the ones they lost by each month, I can see the percentage of their uboat fleet by each month. Did they loose more of their fleet before or after D-Day? <br><br>
+**4. Which area was the most dangerous for the german uboats? was there any time of the war that was effecting this area?** <br>
 By placing all the fates locations on a map, which area was the most dangerous for the uboats to be in? Was their any happening during the war that change this?
 
 # Business Requirements
