@@ -2,6 +2,13 @@ datasets: https://www.kaggle.com/datasets/cormac42/ww2-u-boats
 
 [Business Requirements](#business-requirements)
 
+# Hypotheses
+
+1. The model that was built the most of, was it most effective during it´s time on duty?
+2. Did the uboats that last until the end of the war be more effective than the ones that sunk during the war?
+3. Was the german uboats more effective before or after D-day?
+4. Which area was the most dangerous for the german uboats? was there any time of the war that was effecting this area?
+
 # Business Requirements
 
 ### **Operational efficiency** 
