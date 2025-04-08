@@ -1,13 +1,11 @@
 -- database: ../../db/uboats.db
 
-SELECT * FROM uboats
-ORDER BY `TypeOfUboat` ASC;
+SELECT * FROM uboats;
 
-
-SELECT uboats.UboatName, uboats.TypeOfUboat, DATE(YearCommissioned || '-01-01') AS Commissioned, 
-fates.FateDate AS Fate_Date, 
-CAST(julianday(fates.FateDate) - julianday(DATE(YearCommissioned || '-01-01')) AS INTEGER) AS Days_in_service
+SELECT uboats.UboatName, uboats.Commissioned, fates.FateDate,
+CAST(julianday(fates.FateDate) - julianday(uboats.Commissioned) AS INTEGER) AS Days_in_service,
+ROUND((julianday(fates.FateDate) - julianday(uboats.Commissioned)) / 365.25, 2) AS Years_in_service
 FROM uboats
-INNER JOIN fates
+JOIN fates
 ON uboats.UboatName = fates.UboatName
 ORDER BY Days_in_service DESC
