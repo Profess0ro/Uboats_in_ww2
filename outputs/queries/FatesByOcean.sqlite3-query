@@ -1,0 +1,8 @@
+-- database: ./uboats.db
+
+SELECT * FROM fates;
+
+SELECT Ocean, COUNT(Ocean) AS UboatFates
+FROM fates
+GROUP BY Ocean
+ORDER BY UboatFates DESC
