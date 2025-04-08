@@ -1,0 +1,12 @@
+-- database: ./uboats.db
+
+SELECT * FROM uboats
+ORDER BY `Name` ASC;
+
+SELECT TypeOFUboat AS Uboat,
+SUM(Warships_sunk_n_total_loss_No) AS Warships_sunked,
+SUM(Merchant_Ships_sunk_No) AS Merchant_ships_sunked,
+SUM(Warships_sunk_n_total_loss_No + Merchant_Ships_sunk_No) AS Total_ships_sunked
+FROM uboats
+GROUP BY Uboat
+ORDER BY Total_ships_sunked DESC
