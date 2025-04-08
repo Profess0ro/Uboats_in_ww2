@@ -3,7 +3,8 @@
 SELECT * FROM DaysInService
 ORDER BY `TypeOfUboat` ASC;
 
-SELECT TypeOfUboat, ROUND(AVG(Days_in_service), 2) AS Average_days_in_service
+SELECT TypeOfUboat, ROUND(AVG(Days_in_service), 2) AS Average_days_in_service,
+ROUND(AVG(Days_in_service) / 365.25 , 2) AS Average_year_in_service
 FROM DaysInService
 GROUP BY TypeOfUboat
 ORDER BY Average_days_in_service DESC
