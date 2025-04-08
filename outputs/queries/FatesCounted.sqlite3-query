@@ -2,6 +2,7 @@
 
 SELECT * FROM fates;
 
+
 SELECT Fate, COUNT(Fate) AS UboatFates
 FROM fates
 GROUP BY Fate
