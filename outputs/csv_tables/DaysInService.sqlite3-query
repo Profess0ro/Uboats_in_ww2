@@ -1,0 +1,13 @@
+-- database: ../../db/uboats.db
+
+SELECT * FROM uboats
+ORDER BY `TypeOfUboat` ASC;
+
+
+SELECT uboats.UboatName, DATE(YearCommissioned || '-01-01') AS Commissioned, 
+fates.FateDate AS Fate_Date, 
+CAST(julianday(fates.FateDate) - julianday(DATE(YearCommissioned || '-01-01')) AS INTEGER) AS Days_in_service
+FROM uboats
+INNER JOIN fates
+ON uboats.UboatName = fates.UboatName
+ORDER BY Days_in_service DESC
