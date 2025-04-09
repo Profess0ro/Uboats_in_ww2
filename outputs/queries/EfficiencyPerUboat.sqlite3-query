@@ -5,10 +5,15 @@
 SELECT * FROM uboats;
 
 SELECT 
-    UboatName,
-    TotalShipsSunked,
-    Days_in_service,
-    ROUND(Days_in_service / NULLIF(TotalShipsSunked, 0), 2) AS Days_per_ship
+    sub.UboatName,
+    sub.TotalShipsSunked,
+    sub.Days_in_service,
+    ROUND(sub.Days_in_service / NULLIF(sub.TotalShipsSunked, 0), 2) AS Days_per_ship,
+    fates.FateDate,
+    CASE
+        WHEN fates.FateDate > '1945-05-01' THEN 'Survived the war'
+        ELSE 'Did not survive the War'
+    END AS WarOutCome
 FROM (
     SELECT 
         uboats.UboatName,
@@ -18,6 +23,7 @@ FROM (
     JOIN DaysInService ON uboats.UboatName = DaysInService.UboatName
     GROUP BY uboats.UboatName, DaysInService.Days_in_service
 ) AS sub
-WHERE TotalShipsSunked > 0
-ORDER BY Days_per_ship 
+JOIN fates ON sub.UboatName = fates.UboatName
+ORDER BY sub.UboatName;
+
 
