@@ -1,6 +1,4 @@
--- database: ../../db/uboats.db
-
-SELECT * FROM fates;
+-- database: ../../dashboard/data/uboats.db
 
 SELECT uboats.UboatName,
 uboats.TypeOfUboat,
@@ -10,8 +8,10 @@ fates.Fate,
 fates.latitude AS FateLatitude,
 fates.longitude AS FateLongitude,
 SurvivedOrNot.Days_in_service AS DaysInService,
+EfficiencyPerBoat.TotalShipsSunked,
 SurvivedOrNot.Days_per_ship AS AverageDayPerShip,
 SurvivedOrNot.WarOutCome
 FROM uboats
 LEFT JOIN fates ON uboats.UboatName = fates.UboatName
 LEFT JOIN SurvivedOrNot ON uboats.UboatName = SurvivedOrNot.UboatName
+LEFT JOIN EfficiencyPerBoat ON uboats.UboatName = EfficiencyPerBoat.UboatName
