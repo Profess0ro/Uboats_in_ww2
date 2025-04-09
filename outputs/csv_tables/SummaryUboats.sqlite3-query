@@ -1,0 +1,17 @@
+-- database: ../../db/uboats.db
+
+SELECT * FROM fates;
+
+SELECT uboats.UboatName,
+uboats.TypeOfUboat,
+uboats.Commissioned,
+fates.FateDate,
+fates.Fate,
+fates.latitude AS FateLatitude,
+fates.longitude AS FateLongitude,
+SurvivedOrNot.Days_in_service AS DaysInService,
+SurvivedOrNot.Days_per_ship AS AverageDayPerShip,
+SurvivedOrNot.WarOutCome
+FROM uboats
+LEFT JOIN fates ON uboats.UboatName = fates.UboatName
+LEFT JOIN SurvivedOrNot ON uboats.UboatName = SurvivedOrNot.UboatName
