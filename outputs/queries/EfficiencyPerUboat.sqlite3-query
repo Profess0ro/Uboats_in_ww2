@@ -1,0 +1,23 @@
+-- database: ../../db/uboats.db
+
+-- Use the ▷ button in the top right corner to run the entire file.
+
+SELECT * FROM uboats;
+
+SELECT 
+    UboatName,
+    TotalShipsSunked,
+    Days_in_service,
+    ROUND(Days_in_service / NULLIF(TotalShipsSunked, 0), 2) AS Days_per_ship
+FROM (
+    SELECT 
+        uboats.UboatName,
+        SUM(uboats.Merchant_Ships_sunk_No + uboats.Warships_sunk_n_total_loss_No) AS TotalShipsSunked,
+        DaysInService.Days_in_service
+    FROM uboats
+    JOIN DaysInService ON uboats.UboatName = DaysInService.UboatName
+    GROUP BY uboats.UboatName, DaysInService.Days_in_service
+) AS sub
+WHERE TotalShipsSunked > 0
+ORDER BY Days_per_ship 
+
