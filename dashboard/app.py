@@ -78,6 +78,11 @@ elif menu == "Map":
     </div>
     """, unsafe_allow_html=True)
 
+
+    st.markdown("""
+    <script src="https://kit.fontawesome.com/214e058f0e.js" crossorigin="anonymous"></script>
+    """, unsafe_allow_html=True)
+
     conn = get_connection()
     fates_df = pd.read_sql_query("SELECT * FROM fates", conn)
 
@@ -96,6 +101,8 @@ elif menu == "Map":
 
     marker_cluster = MarkerCluster().add_to(m)
 
+    icon_html = '<i class="fa fa-crosshairs" style="font-size:24px;color:red;"></i>'
+
     # Collects information from the table to the markers
     for _, row in fates_df.iterrows():
         popup_text = f"""
@@ -106,7 +113,7 @@ elif menu == "Map":
         folium.Marker(
             location=[row["latitude"], row["longitude"]],
             popup=folium.Popup(popup_text, max_width=300),
-            icon=folium.Icon(color="blue", icon="info-sign")
+            icon=folium.DivIcon(html=icon_html)
         ).add_to(marker_cluster)
 
     # Displays the map
