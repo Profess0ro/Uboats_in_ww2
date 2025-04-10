@@ -34,6 +34,7 @@ def show_timeline():
     fate_until_now = df[df["FateDate"] <= selected_month]
     active_count = len(commissioned_until_now) - len(fate_until_now)
 
+    fate_counts = df[df["FateDate"] <= selected_month]["Fate"].value_counts()
 
     # Shows only one bar for the selected month
     fig, ax = plt.subplots(figsize=(3, 3), dpi=200)
@@ -49,7 +50,7 @@ def show_timeline():
     buf.seek(0)
 
     # Layout med kolumner
-    col1, col2 = st.columns(2)
+    col1, col2, col3 = st.columns(3)
 
     with col1:
         st.markdown(f"""
@@ -62,12 +63,43 @@ def show_timeline():
         </div>
         """, unsafe_allow_html=True)       
 
-        st.image(buf, width=300)
+        st.image(buf, width=400)
 
 
     with col2:
+
+        if len(fate_counts) > 0:
+            # Plotting the Fate statistics as a bar chart
+            fig, ax = plt.subplots(figsize=(5, 3), dpi=200)
+            fate_counts.plot(kind="bar", ax=ax, color="red")
+            ax.set_title("U-boat Fates")
+            ax.set_xticklabels(fate_counts.index, rotation=45, ha="right")
+
+            # Show fate text counts below the bar chart
+            st.markdown(f"""
+            <div style="background-color: rgba(255,255,255,0.8); padding: 1rem; border-radius: 10px; text-align: center;">
+                {' '.join([f"<b>{fate}:</b> {count}<br>" for fate, count in fate_counts.items()])}
+            </div>
+            """, unsafe_allow_html=True)
+
+            # Display the bar chart
+            st.pyplot(fig)
+        else:
+            st.markdown(f"""
+            <div style="background-color: rgba(255,255,255,0.8); padding: 1rem; border-radius: 10px; text-align: center;">
+                No fates recorded for this period.
+            </div>
+            """, unsafe_allow_html=True)
+
+    with col3:
+
         st.markdown("""
         <div style="background-color: rgba(255,255,255,0.8); padding: 1rem; border-radius: 10px;">
-            <p> More info to be shown</p>
+            <b>Fate explanations:</b><br>
+            <b>Stricken:</b> A boat that was removed from active duty but not necessarily destroyed.<br>
+            <b>Scuttled:</b> A boat that was deliberately sunk, typically by its own crew to prevent capture.<br>
+            <b>Scrapped:</b> A boat that was dismantled and decommissioned for parts.<br>
+            <b>Decommissioned:</b> A boat that was taken out of service, often because it was no longer deemed useful.<br>
+            <b>Broken up:</b> A boat that was dismantled for parts or scrap, similar to scrapping.<br>
         </div>
         """, unsafe_allow_html=True)
