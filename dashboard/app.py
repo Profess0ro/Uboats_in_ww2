@@ -2,7 +2,10 @@ import streamlit as st
 import sqlite3
 import pandas as pd
 
-from pages import data_page, map_page, timeline_page
+
+from pages.data_page import show_data
+from pages.map_page import show_map
+from pages.timeline_page import show_timeline
 
 # --- PAGE CONFIG ---
 st.set_page_config(page_title="WWII U-boat Dashboard", layout="wide")
@@ -45,8 +48,8 @@ if menu == "Home":
     
 # --- U-BOAT DATA PAGE ---
 elif menu == "U-boat Data":
-    data_page.show_data()
+    show_data()
 
 # --- MAP PAGE ---
 elif menu == "Map":
-    map_page.show_map()
+    show_map()
