@@ -33,8 +33,11 @@ menu = st.sidebar.radio("Navigation", ["Home", "U-boat Data", "Map", "Timeline",
 # --- DATABASE CONNECTION ---
 @st.cache_data
 def load_summary_data():
-    df = pd.read_csv("dashboard/data/csv/SummaryUboats.csv")
+    conn = sqlite3.connect("dashboard/data/uboats.db")
+    df = pd.read_sql_query("SELECT * FROM SummaryUboats", conn)
+    conn.close()
     return df
+
 
 # --- HOME PAGE ---
 if menu == "Home":
@@ -49,8 +52,10 @@ if menu == "Home":
 # --- U-BOAT DATA PAGE ---
 elif menu == "U-boat Data":
     st.subheader("📊 Overview of U-boats")
-    summary_df = load_summary_data()
-    st.dataframe(summary_df, use_container_width=True)
+    
+    df = load_summary_data()
+    st.dataframe(df, use_container_width=True)
+
     st.markdown("""
     <div style="background-color: rgba(255,255,255,0.8); padding: 1rem; border-radius: 10px;">
     All of this data are summarized from the following page and dataset:<br> 
