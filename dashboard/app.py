@@ -3,9 +3,9 @@ import sqlite3
 import pandas as pd
 
 
-from pages.data_page import show_data
-from pages.map_page import show_map
-from pages.timeline_page import show_timeline
+from data_page import show_data
+from map_page import show_map
+from timeline_page import show_timeline
 
 # --- PAGE CONFIG ---
 st.set_page_config(page_title="WWII U-boat Dashboard", layout="wide")
@@ -40,7 +40,7 @@ menu = st.sidebar.radio("Navigation", ["Home", "U-boat Data", "Map", "Timeline",
 if menu == "Home":
     st.markdown("""
     <div style="background-color: rgba(255,255,255,0.8); padding: 1rem; border-radius: 10px;">
-        <h3>📊 Overview of U-boats</h3><br>
+        <h3>📊 Overview of U-boats (Unterseeboots)</h3><br>
         <p>This dashboard visualizes the activity, effectiveness, and fate of German U-boats during World War II.<br>
         Explore U-boat statistics, view interactive maps, analyze dangerous zones, and filter by submarine types, year, and more.</p>
     </div>
@@ -53,3 +53,7 @@ elif menu == "U-boat Data":
 # --- MAP PAGE ---
 elif menu == "Map":
     show_map()
+
+# --- TIMELINE PAGE ---
+elif menu == "Timeline":
+    show_timeline()
