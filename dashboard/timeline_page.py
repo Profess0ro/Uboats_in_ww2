@@ -34,27 +34,40 @@ def show_timeline():
     fate_until_now = df[df["FateDate"] <= selected_month]
     active_count = len(commissioned_until_now) - len(fate_until_now)
 
-    # Shows the selected month
-    st.markdown(f"""
-    <div style="background-color: rgba(255,255,255,0.8); padding: 1rem; border-radius: 10px;">
-                <h3>{selected_month.strftime('%B %Y')}</h3>
-    </div>
-    """, unsafe_allow_html=True)
 
     # Shows only one bar for the selected month
-    fig, ax = plt.subplots(figsize=(3, 3))
+    fig, ax = plt.subplots(figsize=(3, 3), dpi=200)
     ax.bar([selected_month], [active_count], width=20, color="red")
 
     ax.set_xticks([])
-    ax.set_ylim(0, 1000)
-    ax.set_ylabel("Amount of active U-boats")
+    ax.set_ylim(0, 700)
+    ax.set_xlabel("Amount of active U-boats")
 
-    st.pyplot(fig)
+    import io
+    buf = io.BytesIO()
+    fig.savefig(buf, format="png", bbox_inches="tight")
+    buf.seek(0)
 
-    st.markdown(f"""
-    <div style="background-color: rgba(255,255,255,0.8); padding: 1rem; border-radius: 10px;">
-        <b>Total commissioned U-boats:</b> {len(commissioned_until_now)}<br>
-        <b>Total U-boats that met their fate:</b> {len(fate_until_now)}<br>
-        <b>Active U-boats {selected_month.strftime('%B %Y')}:</b> {active_count}
-    </div>
-    """, unsafe_allow_html=True)
+    # Layout med kolumner
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.markdown(f"""
+        <div style="background-color: rgba(255,255,255,0.8); padding: 1rem; border-radius: 10px; text-align: center;">
+            <h3>
+                <b>Total commissioned U-boats:</b> <span style="color: red;">{len(commissioned_until_now)}</span><br>
+                <b>Total U-boats that met their fate:</b> <span style="color: red;">{len(fate_until_now)}</span><br>
+                <b>Active U-boats {selected_month.strftime('%B %Y')}:</b> <span style="color: red;">{active_count}</span>
+            </h3>
+        </div>
+        """, unsafe_allow_html=True)       
+
+        st.image(buf, width=300)
+
+
+    with col2:
+        st.markdown("""
+        <div style="background-color: rgba(255,255,255,0.8); padding: 1rem; border-radius: 10px;">
+            <p> More info to be shown</p>
+        </div>
+        """, unsafe_allow_html=True)
