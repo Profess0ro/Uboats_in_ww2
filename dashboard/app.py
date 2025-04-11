@@ -33,7 +33,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # --- SIDEBAR NAVIGATION ---
-menu = st.sidebar.radio("Navigation", ["Home", "U-boat Data", "Map", "Timeline", "Submarine Types"])
+menu = st.sidebar.radio("Navigation", ["Home", "U-boat Data", "Map", "Timeline", "Statistics"])
 
 
 # --- HOME PAGE ---
