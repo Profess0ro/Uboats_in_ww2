@@ -4,13 +4,25 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 from datetime import datetime
+import numpy as np
+import matplotlib
 
 def get_connection():
     return sqlite3.connect("dashboard/data/uboats.db", check_same_thread=False)
 
 def show_timeline():
     st.subheader("🕰️ Timeline for Germanys u-boat fleet during the WWII")
-
+    st.markdown(f"""
+        <div style="background-color: rgba(255,255,255,0.8); padding: 1rem; border-radius: 10px;">
+            <p>
+                Use the slider to select a specific month within the recorded period.<br>
+                You will see:<br>
+                - How many U-boats were commissioned by that date<br>
+                - How many U-boats were active during that month<br>
+                - The distribution of U-boat fates up to that point
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
     conn = get_connection()
     df = pd.read_sql_query("SELECT * FROM SummaryUboats", conn)
 
@@ -55,11 +67,11 @@ def show_timeline():
     with col1:
         st.markdown(f"""
         <div style="background-color: rgba(255,255,255,0.8); padding: 1rem; border-radius: 10px; text-align: center;">
-            <h3>
+            <h4>
                 <b>Total commissioned U-boats:</b> <span style="color: red;">{len(commissioned_until_now)}</span><br>
                 <b>Total U-boats that met their fate:</b> <span style="color: red;">{len(fate_until_now)}</span><br>
                 <b>Active U-boats {selected_month.strftime('%B %Y')}:</b> <span style="color: red;">{active_count}</span>
-            </h3>
+            </h4>
         </div>
         """, unsafe_allow_html=True)       
 
@@ -67,29 +79,51 @@ def show_timeline():
 
 
     with col2:
-
         if len(fate_counts) > 0:
-            # Plotting the Fate statistics as a bar chart
+            # Färgpalett
+            cmap = plt.get_cmap("tab20")
+            colors = cmap(np.linspace(0, 1, len(fate_counts)))
+
+            # Pie chart utan labels och procent
             fig, ax = plt.subplots(figsize=(5, 3), dpi=200)
-            fate_counts.plot(kind="bar", ax=ax, color="red")
+            wedges, _ = ax.pie(
+                fate_counts,
+                startangle=140,
+                colors=colors,
+                wedgeprops={'linewidth': 0.5, 'edgecolor': 'white'}
+            )
+            ax.axis("equal")
             ax.set_title("U-boat Fates")
-            ax.set_xticklabels(fate_counts.index, rotation=45, ha="right")
 
-            # Show fate text counts below the bar chart
-            st.markdown(f"""
-            <div style="background-color: rgba(255,255,255,0.8); padding: 1rem; border-radius: 10px; text-align: center;">
-                {' '.join([f"<b>{fate}:</b> {count}<br>" for fate, count in fate_counts.items()])}
-            </div>
-            """, unsafe_allow_html=True)
-
-            # Display the bar chart
             st.pyplot(fig)
+
+            # Koppla fate + count + color i en lista
+            total_fates = sum(fate_counts)
+            fate_info = [(fate, count, color) for (fate, count), color in zip(fate_counts.items(), colors)]
+
+            # Dela upp i grupper om 4 för kolumner
+            fate_split = [fate_info[i:i+4] for i in range(0, len(fate_info), 4)]
+
+            legend_col1, legend_col2, legend_col3 = st.columns(3)
+
+            for col, group in zip([legend_col1, legend_col2, legend_col3], fate_split):
+                with col:
+                    html_block = "<div style='background-color: rgb(255,255,255); padding: 1rem; border-radius: 10px; text-align: left;'>"
+                    for fate, count, color in group:
+                        percent = (count / total_fates) * 100
+                        hex_color = matplotlib.colors.to_hex(color)
+                        html_block += f"<span style='color:{hex_color}'><b>{fate}:</b> {count} ({percent:.1f}%)</span><br>"
+                    html_block += "</div>"
+                    st.markdown(html_block, unsafe_allow_html=True)
         else:
             st.markdown(f"""
             <div style="background-color: rgba(255,255,255,0.8); padding: 1rem; border-radius: 10px; text-align: center;">
                 No fates recorded for this period.
             </div>
             """, unsafe_allow_html=True)
+
+
+
 
     with col3:
 

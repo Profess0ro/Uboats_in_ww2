@@ -25,7 +25,10 @@ def show_map():
     """, unsafe_allow_html=True)
 
     conn = get_connection()
-    fates_df = pd.read_sql_query("SELECT * FROM fates", conn)
+    fates_df = pd.read_sql_query("""
+        SELECT UboatName, Fate, FateDate, latitude, longitude 
+        FROM fates
+        """, conn)
 
     # Convert datatypes
     fates_df["latitude"] = fates_df["latitude"].astype(float)
