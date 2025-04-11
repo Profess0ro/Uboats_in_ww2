@@ -129,11 +129,16 @@ def show_timeline():
 
         st.markdown("""
         <div style="background-color: rgba(255,255,255,0.8); padding: 1rem; border-radius: 10px;">
-            <b>Fate explanations:</b><br>
-            <b>Stricken:</b> A boat that was removed from active duty but not necessarily destroyed.<br>
-            <b>Scuttled:</b> A boat that was deliberately sunk, typically by its own crew to prevent capture.<br>
-            <b>Scrapped:</b> A boat that was dismantled and decommissioned for parts.<br>
-            <b>Decommissioned:</b> A boat that was taken out of service, often because it was no longer deemed useful.<br>
-            <b>Broken up:</b> A boat that was dismantled for parts or scrap, similar to scrapping.<br>
+            <b>Broken up:</b> The U-boat was decommissioned and dismantled.<br>
+            <b>Buried:</b> The wreckage was found and buried, often as part of military burial.<br>
+            <b>Captured:</b> The U-boat was taken into enemy custody.<br>
+            <b>Decommissioned:</b> The U-boat was retired from active service.<br>
+            <b>Missing:</b> The U-boat disappeared without trace and was presumed lost at sea.<br>
+            <b>Run aground:</b> The U-boat ran aground, usually due to navigational error.<br>
+            <b>Scrapped:</b> The U-boat was dismantled for parts or materials.<br>
+            <b>Scuttled:</b> The U-boat was deliberately sunk by its own crew to avoid capture.<br>
+            <b>Stricken:</b> Officially removed from service, usually due to irreparable damage.<br>
+            <b>Sunk:</b> The U-boat was destroyed and sunk in combat.<br>
+            <b>Surrendered:</b> The U-boat was surrendered to the enemy, usually after the war.<br>
         </div>
         """, unsafe_allow_html=True)

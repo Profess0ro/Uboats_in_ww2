@@ -10,7 +10,7 @@ def show_data():
     
     conn = get_connection()
     df = pd.read_sql_query("SELECT * FROM SummaryUboats", conn)
-
+    df["AverageDayPerShip"] = pd.to_numeric(df["AverageDayPerShip"], errors="coerce")
     st.dataframe(df, use_container_width=True)
 
     st.markdown("""
