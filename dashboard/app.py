@@ -6,6 +6,7 @@ import pandas as pd
 from data_page import show_data
 from map_page import show_map
 from timeline_page import show_timeline
+from statistics_page import show_statistics
 
 # --- PAGE CONFIG ---
 st.set_page_config(page_title="WWII U-boat Dashboard", layout="wide")
@@ -57,3 +58,7 @@ elif menu == "Map":
 # --- TIMELINE PAGE ---
 elif menu == "Timeline":
     show_timeline()
+
+# --- STATISTICS PAGE ---
+elif menu == "Statistics":
+    show_statistics()
