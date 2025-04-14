@@ -2,7 +2,7 @@ import streamlit as st
 import sqlite3
 import pandas as pd
 
-from queries.queries import most_sunked_ships, effective_boats
+from queries.queries import most_sunked_ships, effective_boats, longest_serving_time
 
 
 def get_connection():
@@ -21,7 +21,8 @@ def show_statistics():
     option = st.selectbox(
         "",
         ["U-boats that sunk most ships",
-         "U-boats with the best efficiency per day"],
+         "U-boats with the best efficiency per day",
+         "U-boats with the longest time in service"],
         label_visibility="collapsed"
     )
 
@@ -63,3 +64,18 @@ def show_statistics():
                 If you want to read more about a specific U-boat, copy the Wikipedia link.
             </div>
             """, unsafe_allow_html=True)
+        
+    if option == "U-boats with the longest time in service":
+        query = longest_serving_time()
+        df = pd.read_sql_query(query, conn)
+
+        st.dataframe(df, hide_index=True, use_container_width=True)
+
+        st.markdown("""
+        <div style="background-color: rgba(255,255,255,0.8); padding: 1rem; border-radius: 10px;">
+            <b>These are the U-boats that served the longest during WWII.</b><br>
+            The list is sorted by the total number of days each U-boat was in active service.<br>
+            Longer service duration may indicate successful missions, effective crews, or simply survivability through the war.<br><br>
+            If you want to read more about a specific U-boat, copy the Wikipedia link.
+        </div>
+        """, unsafe_allow_html=True)

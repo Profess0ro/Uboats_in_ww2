@@ -29,3 +29,19 @@ def effective_boats():
     ON SummaryUboats.UboatName = UboatsRaw.Name
     ORDER BY AverageDayPerShip
     """
+
+def longest_serving_time():
+    return """
+    SELECT
+        SummaryUboats.UboatName,
+        SummaryUboats.TypeOfUboat,
+        SummaryUboats.Commissioned,
+        SummaryUboats.FateDate,
+        SummaryUboats.Fate,
+        SummaryUboats.DaysInService,
+        UboatsRaw.Wikipedia
+    FROM SummaryUboats
+    JOIN UboatsRaw
+    ON SummaryUboats.UboatName = UboatsRaw.Name
+    ORDER BY DaysInService DESC
+    """
