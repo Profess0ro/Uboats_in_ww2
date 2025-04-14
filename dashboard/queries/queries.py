@@ -1,4 +1,4 @@
-def top5_most_sunked_ships():
+def most_sunked_ships():
     return """
     SELECT 
         EfficiencyPerBoat.UboatName, 
@@ -11,10 +11,9 @@ def top5_most_sunked_ships():
     JOIN UboatsRaw
     ON EfficiencyPerBoat.UboatName = UboatsRaw.Name
     ORDER BY EfficiencyPerBoat.TotalShipsSunked DESC
-    LIMIT 5
     """
 
-def top5_effective_boats():
+def effective_boats():
     return """
     SELECT 
         SummaryUboats.UboatName, 
@@ -29,5 +28,4 @@ def top5_effective_boats():
     JOIN UboatsRaw
     ON SummaryUboats.UboatName = UboatsRaw.Name
     ORDER BY AverageDayPerShip
-    LIMIT 5;
     """
