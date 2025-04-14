@@ -1,17 +1,21 @@
 -- database: ../../dashboard/data/uboats.db
 
-SELECT uboats.UboatName,
-uboats.TypeOfUboat,
-uboats.Commissioned,
-fates.FateDate,
-fates.Fate,
-fates.latitude AS FateLatitude,
-fates.longitude AS FateLongitude,
-SurvivedOrNot.Days_in_service AS DaysInService,
-EfficiencyPerBoat.TotalShipsSunked,
-SurvivedOrNot.Days_per_ship AS AverageDayPerShip,
-SurvivedOrNot.WarOutCome
+SELECT 
+    uboats.UboatName,
+    uboats.TypeOfUboat,
+    uboats.Commissioned,
+    fates.FateDate,
+    fates.Fate,
+    fates.latitude AS FateLatitude,
+    fates.longitude AS FateLongitude,
+    DaysInService.Days_in_service,
+    EfficiencyPerBoat.TotalShipsSunked,
+    DaysInService.Years_in_service,
+    ROUND(1.0 * DaysInService.Days_in_service / EfficiencyPerBoat.TotalShipsSunked, 2) AS AverageDayPerShip,
+    SurvivedOrNot.WarOutCome
 FROM uboats
 LEFT JOIN fates ON uboats.UboatName = fates.UboatName
+LEFT JOIN DaysInService ON uboats.UboatName = DaysInService.UboatName
 LEFT JOIN SurvivedOrNot ON uboats.UboatName = SurvivedOrNot.UboatName
 LEFT JOIN EfficiencyPerBoat ON uboats.UboatName = EfficiencyPerBoat.UboatName
+

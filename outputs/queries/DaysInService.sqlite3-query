@@ -1,11 +1,15 @@
--- database: ../../db/uboats.db
+-- database: ../../dashboard/data/uboats.db
 
-SELECT * FROM uboats;
+-- Use the ▷ button in the top right corner to run the entire file.
 
-SELECT uboats.UboatName, uboats.Commissioned, fates.FateDate,
-CAST(julianday(fates.FateDate) - julianday(uboats.Commissioned) AS INTEGER) AS Days_in_service,
-ROUND((julianday(fates.FateDate) - julianday(uboats.Commissioned)) / 365.25, 2) AS Years_in_service
-FROM uboats
-JOIN fates
-ON uboats.UboatName = fates.UboatName
-ORDER BY Days_in_service DESC
+
+
+SELECT 
+  SummaryUboats.UboatName, 
+  SummaryUboats.Commissioned, 
+  fates.FateDate,
+  CAST(julianday(DATE(fates.FateDate)) - julianday(DATE(SummaryUboats.Commissioned)) AS INTEGER) AS Days_in_service,
+  ROUND((julianday(DATE(fates.FateDate)) - julianday(DATE(SummaryUboats.Commissioned))) / 365.25, 2) AS Years_in_service
+FROM SummaryUboats
+JOIN fates ON SummaryUboats.UboatName = fates.UboatName
+ORDER BY Days_in_service DESC;
