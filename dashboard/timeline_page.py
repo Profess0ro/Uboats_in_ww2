@@ -2,10 +2,10 @@ import streamlit as st
 import sqlite3
 import pandas as pd
 import matplotlib.pyplot as plt
-import matplotlib.dates as mdates
-from datetime import datetime
 import numpy as np
 import matplotlib
+from pandas.tseries.offsets import MonthEnd 
+
 
 def get_connection():
     return sqlite3.connect("dashboard/data/uboats.db", check_same_thread=False)
@@ -42,13 +42,12 @@ def show_timeline():
         format_func=lambda x: x.strftime("%B %Y")
     )
 
-    commissioned_until_now = df[df["Commissioned"] <= selected_month]
-    fate_until_now = df[df["FateDate"] <= selected_month]
-    active_count = max(0, len(commissioned_until_now) - len(fate_until_now))
-    
-    
+    end_of_month = selected_month + MonthEnd(0)
 
-    fate_counts = df[df["FateDate"] <= selected_month]["Fate"].value_counts()
+    commissioned_until_now = df[df["Commissioned"] <= end_of_month]
+    fate_until_now = df[df["FateDate"] <= end_of_month]
+    active_count = max(0, len(commissioned_until_now) - len(fate_until_now))
+    fate_counts = df[df["FateDate"] <= end_of_month]["Fate"].value_counts()
 
     # Shows only one bar for the selected month
     fig, ax = plt.subplots(figsize=(3, 3), dpi=200)
