@@ -13,7 +13,6 @@ def show_about():
                     • <b>Database Construction:</b> Built a SQLite database called <i>SummaryUboats</i> as the main data source.<br>
                     • <b>SQL Calculations:</b> Created queries to calculate service days, average efficiency per sunk ship, type-based stats, and more.<br>
                     • <b>Visualization:</b> Used Streamlit to build a minimalistic dashboard that focuses on clarity and interactivity rather than UI complexity.<br><br>
-
                     <i>This project emphasizes data analysis and transformation over visual styling, highlighting how historical data can be shaped into valuable insights using SQL and Python.</i>
                 </div>
                 """, unsafe_allow_html=True)
