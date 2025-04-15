@@ -44,7 +44,7 @@ def show_timeline():
 
     commissioned_until_now = df[df["Commissioned"] <= selected_month]
     fate_until_now = df[df["FateDate"] <= selected_month]
-    active_count = len(commissioned_until_now) - len(fate_until_now)
+    active_count = max(0, len(commissioned_until_now) - len(fate_until_now))
 
     fate_counts = df[df["FateDate"] <= selected_month]["Fate"].value_counts()
 
