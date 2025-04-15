@@ -85,7 +85,11 @@ def show_statistics():
         query = type_longest_serving_days()
         df = pd.read_sql_query(query, conn)
 
-        st.dataframe(df, hide_index=True, use_container_width=True)
+        st.write(
+                df.style.set_properties(**{'text-align': 'center'}).set_table_styles(
+                    [{'selector': 'th', 'props': [('text-align', 'center')]}]
+                )
+            )
 
         st.markdown("""
         <div style="background-color: rgba(255,255,255,0.8); padding: 1rem; border-radius: 10px;">
