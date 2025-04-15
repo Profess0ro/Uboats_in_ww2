@@ -43,11 +43,9 @@ def show_timeline():
     )
 
     commissioned_until_now = df[df["Commissioned"] <= selected_month]
-    missing_commissioned = df[df["Commissioned"] > selected_month]
-    st.write("Commissioned after selected month:", missing_commissioned)
     fate_until_now = df[df["FateDate"] <= selected_month]
     active_count = max(0, len(commissioned_until_now) - len(fate_until_now))
-    missing_fates = df[df["FateDate"] > selected_month]
+    
     
 
     fate_counts = df[df["FateDate"] <= selected_month]["Fate"].value_counts()
@@ -79,8 +77,7 @@ def show_timeline():
             </h4>
         </div>
         """, unsafe_allow_html=True)       
-        st.write("Commissioned after selected month:", missing_commissioned)
-        st.write("Fates after selected month:", missing_fates)
+
         st.image(buf, width=400)
 
 
