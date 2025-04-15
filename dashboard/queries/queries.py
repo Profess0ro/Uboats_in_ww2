@@ -17,9 +17,9 @@ def effective_boats():
     return """
     SELECT 
         SummaryUboats.UboatName, 
-        TypeOfUboat, 
+        SummaryUboats.TypeOfUboat, 
         EfficiencyPerUboat.TotalShipsSunked,
-        Days_in_service,
+        SummaryUboats.Days_in_service,
         AverageDayPerShip,
         UboatsRaw.Wikipedia
     FROM SummaryUboats
