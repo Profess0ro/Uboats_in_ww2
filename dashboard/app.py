@@ -40,13 +40,16 @@ menu = st.sidebar.radio("Navigation", ["Home", "U-boat Data", "Map", "Timeline",
 
 # --- HOME PAGE ---
 if menu == "Home":
-    st.markdown("""
-    <div style="background-color: rgba(255,255,255,0.8); padding: 1rem; border-radius: 10px;">
-        <h3>📊 Overview of U-boats (Unterseeboots)</h3><br>
-        <p>This dashboard visualizes the activity, effectiveness, and fate of German U-boats during World War II.<br>
-        Explore U-boat statistics, view interactive maps, analyze dangerous zones, and filter by submarine types, year, and more.</p>
-    </div>
-    """, unsafe_allow_html=True)
+            st.markdown("""
+            <div style="background-color: rgba(255,255,255,0.85); padding: 1.5rem; border-radius: 10px; text-align: left;">
+                <h3>👋 Welcome to the German U-boat Data Dashboard</h3>
+                Explore detailed insights about the German U-boat fleet from World War II.<br><br>
+                Use the navigation menu on the left to dive into statistics, maps, and summaries based on real data from historical sources.<br>
+                This dashboard is designed to make the data accessible and engaging – whether you're a history enthusiast or a data nerd.<br><br>
+                Enjoy exploring!
+            </div>
+            """, unsafe_allow_html=True)
+
     
 # --- U-BOAT DATA PAGE ---
 elif menu == "U-boat Data":
