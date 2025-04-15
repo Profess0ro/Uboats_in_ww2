@@ -14,6 +14,20 @@ def show_statistics():
 
     st.markdown("""
         <div style="background-color: rgba(255, 255, 255, 0.9); padding: 1rem; border-radius: 10px;">
+            <h5><b>Choose a statistic to explore the performance and history of German U-boats during WWII.</b></h5>
+            <p>This section presents different statistical views of the U-boat fleet. You can explore:</p>
+            <ul>
+                <li><b>The U-boats that sank the most ships</b> – See which U-boats were most successful in sinking enemy ships.</li>
+                <li><b>The best efficiency per day</b> – Rank the U-boats based on how quickly they sank ships during their service.</li>
+                <li><b>The longest-serving U-boats</b> – Discover which U-boats served the longest in WWII.</li>
+                <li><b>Average days in service per U-boat type</b> – See how different types of U-boats fared over the course of the war.</li>
+            </ul>
+            <p>Once you select a statistic, detailed information will be displayed below.</p>
+        </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown("""
+        <div style="background-color: rgba(255, 255, 255, 0.9); padding: 1rem; border-radius: 10px;">
             <h5>Choose a statistic to display by selecting an option below</h5>
         </div>
     """, unsafe_allow_html=True)
