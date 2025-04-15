@@ -5,7 +5,6 @@ def show_about():
                 <div style="background-color: rgba(255,255,255,0.8); padding: 1rem; border-radius: 10px; text-align: left;">
                     <h4>🛠️ Project Methodology & Workflow</h4>
                     This project was built with a strong focus on data preparation, transformation, and back-end logic, rather than front-end design.<br><br>
-
                     <b>Workflow overview:</b><br>
                     • <b>Data Source:</b> Selected a World War II U-boat dataset from <a href="https://www.kaggle.com/datasets/cormac42/ww2-u-boats" target="_blank">Kaggle</a>.<br>
                     • <b>Data Cleaning:</b> Cleaned and restructured the data to ensure consistency and accuracy.<br>
