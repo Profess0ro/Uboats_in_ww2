@@ -19,7 +19,7 @@ def effective_boats():
         SummaryUboats.UboatName, 
         TypeOfUboat, 
         EfficiencyPerUboat.TotalShipsSunked,
-        DaysInService,
+        Days_in_service,
         AverageDayPerShip,
         UboatsRaw.Wikipedia
     FROM SummaryUboats
@@ -38,10 +38,22 @@ def longest_serving_time():
         SummaryUboats.Commissioned,
         SummaryUboats.FateDate,
         SummaryUboats.Fate,
-        SummaryUboats.DaysInService,
+        SummaryUboats.Days_in_service,
         UboatsRaw.Wikipedia
     FROM SummaryUboats
     JOIN UboatsRaw
     ON SummaryUboats.UboatName = UboatsRaw.Name
-    ORDER BY DaysInService DESC
+    ORDER BY Days_in_service DESC
+    """
+
+def type_longest_serving_days():
+    return """
+    SELECT 
+        TypeOfUboat, 
+        ROUND(AVG(Days_in_service), 2) AS AvgDaysInService, 
+        ROUND(AVG(Years_in_service), 2) AS AvgYearsInService, 
+        WarOutCome
+    FROM SummaryUboats
+    GROUP BY TypeOfUboat
+    ORDER BY AvgDaysInService DESC
     """

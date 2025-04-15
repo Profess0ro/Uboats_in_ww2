@@ -2,7 +2,7 @@ import streamlit as st
 import sqlite3
 import pandas as pd
 
-from queries.queries import most_sunked_ships, effective_boats, longest_serving_time
+from queries.queries import most_sunked_ships, effective_boats, longest_serving_time, type_longest_serving_days
 
 
 def get_connection():
@@ -22,7 +22,8 @@ def show_statistics():
         "",
         ["U-boats that sunk most ships",
          "U-boats with the best efficiency per day",
-         "U-boats with the longest time in service"],
+         "U-boats with the longest time in service",
+         "Average days in service per U-boat type"],
         label_visibility="collapsed"
     )
 
@@ -77,5 +78,21 @@ def show_statistics():
             The list is sorted by the total number of days each U-boat was in active service.<br>
             Longer service duration may indicate successful missions, effective crews, or simply survivability through the war.<br><br>
             If you want to read more about a specific U-boat, copy the Wikipedia link.
+        </div>
+        """, unsafe_allow_html=True)
+
+    if option == "Average days in service per U-boat type":
+        query = type_longest_serving_days()
+        df = pd.read_sql_query(query, conn)
+
+        st.dataframe(df, hide_index=True, use_container_width=True)
+
+        st.markdown("""
+        <div style="background-color: rgba(255,255,255,0.8); padding: 1rem; border-radius: 10px;">
+            <b>Average Days in Service per U-boat Type</b><br>
+                This table presents the average number of days each U-boat type remained in service.<br> 
+                It offers insight into which types were deployed the longest, possibly reflecting their reliability,<br>
+                strategic value, or timing of deployment during the war.<br><br>
+                The data may help uncover which designs had the most prolonged operational use in the German Navy's U-boat fleet.
         </div>
         """, unsafe_allow_html=True)
