@@ -7,6 +7,7 @@ from data_page import show_data
 from map_page import show_map
 from timeline_page import show_timeline
 from statistics_page import show_statistics
+from about_page import show_about
 
 # --- PAGE CONFIG ---
 st.set_page_config(page_title="WWII U-boat Dashboard", layout="wide")
@@ -34,7 +35,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # --- SIDEBAR NAVIGATION ---
-menu = st.sidebar.radio("Navigation", ["Home", "U-boat Data", "Map", "Timeline", "Statistics"])
+menu = st.sidebar.radio("Navigation", ["Home", "U-boat Data", "Map", "Timeline", "Statistics", "About this project"])
 
 
 # --- HOME PAGE ---
@@ -62,3 +63,7 @@ elif menu == "Timeline":
 # --- STATISTICS PAGE ---
 elif menu == "Statistics":
     show_statistics()
+
+# --- ABOUT PAGE ---
+elif menu == "About this project":
+    show_about()
