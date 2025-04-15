@@ -72,7 +72,6 @@ def show_timeline():
                 <b>Total commissioned U-boats:</b> <span style="color: red;">{len(commissioned_until_now)}</span><br>
                 <b>Total U-boats that met their fate:</b> <span style="color: red;">{len(fate_until_now)}</span><br>
                 <b>Active U-boats {selected_month.strftime('%B %Y')}:</b> <span style="color: red;">{active_count}</span>
-                
             </h4>
         </div>
         """, unsafe_allow_html=True)       
