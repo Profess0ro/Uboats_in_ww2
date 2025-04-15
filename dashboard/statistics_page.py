@@ -26,12 +26,6 @@ def show_statistics():
         </div>
     """, unsafe_allow_html=True)
 
-    st.markdown("""
-        <div style="background-color: rgba(255, 255, 255, 0.9); padding: 1rem; border-radius: 10px;">
-            <h5>Choose a statistic to display by selecting an option below</h5>
-        </div>
-    """, unsafe_allow_html=True)
-
     option = st.selectbox(
         "",
         ["U-boats that sunk most ships",
