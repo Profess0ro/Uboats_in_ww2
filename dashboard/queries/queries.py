@@ -1,16 +1,16 @@
 def most_sunked_ships():
     return """
     SELECT 
-        EfficiencyPerBoat.UboatName, 
+        EfficiencyPerUboat.UboatName, 
         SummaryUboats.TypeOfUboat, 
-        EfficiencyPerBoat.TotalShipsSunked,
+        EfficiencyPerUboat.TotalShipsSunked,
         UboatsRaw.Wikipedia
-    FROM EfficiencyPerBoat
+    FROM EfficiencyPerUboat
     JOIN SummaryUboats
-    ON EfficiencyPerBoat.UboatName = SummaryUboats.UboatName
+    ON EfficiencyPerUboat.UboatName = SummaryUboats.UboatName
     JOIN UboatsRaw
-    ON EfficiencyPerBoat.UboatName = UboatsRaw.Name
-    ORDER BY EfficiencyPerBoat.TotalShipsSunked DESC
+    ON EfficiencyPerUboat.UboatName = UboatsRaw.Name
+    ORDER BY EfficiencyPerUboat.TotalShipsSunked DESC
     """
 
 def effective_boats():
@@ -18,13 +18,13 @@ def effective_boats():
     SELECT 
         SummaryUboats.UboatName, 
         TypeOfUboat, 
-        EfficiencyPerBoat.TotalShipsSunked,
+        EfficiencyPerUboat.TotalShipsSunked,
         DaysInService,
         AverageDayPerShip,
         UboatsRaw.Wikipedia
     FROM SummaryUboats
-    JOIN EfficiencyPerBoat
-    ON SummaryUboats.UboatName = EfficiencyPerBoat.UboatName
+    JOIN EfficiencyPerUboat
+    ON SummaryUboats.UboatName = EfficiencyPerUboat.UboatName
     JOIN UboatsRaw
     ON SummaryUboats.UboatName = UboatsRaw.Name
     ORDER BY AverageDayPerShip
