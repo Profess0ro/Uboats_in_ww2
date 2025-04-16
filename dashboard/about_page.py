@@ -23,7 +23,7 @@ def show_about():
                 """, unsafe_allow_html=True)
 
 def show_raw_data():
-    st.subheader("📊 Overview of U-boats")
+    st.subheader("📊 Raw data")
     
     conn = get_connection()
     df = pd.read_sql_query("SELECT * FROM UboatsRaw", conn)
