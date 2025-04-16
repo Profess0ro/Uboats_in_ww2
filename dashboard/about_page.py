@@ -16,3 +16,14 @@ def show_about():
                     <i>This project emphasizes data analysis and transformation over visual styling, highlighting how historical data can be shaped into valuable insights using SQL and Python.</i>
                 </div>
                 """, unsafe_allow_html=True)
+
+    
+    st.markdown("""
+                <div style="background-color: rgba(255,255,255,0.8); padding: 1rem; border-radius: 10px; text-align: left;">
+                If you would like to contact me, feel free to reach out to me at these platforms:<br>
+                <a href="https://github.com/Profess0ro" target="_blank">Github</a><br>
+                <a href="https://www.linkedin.com/in/freddy-larsson-4082752ab/" target="_blank">LinkedIn</a><br>
+                Email: professoro88@gmail.com<br>
+                <img src="../images/freddy.jpg">
+                </div>
+                """, unsafe_allow_html=True)
