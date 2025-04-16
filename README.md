@@ -1,82 +1,105 @@
-datasets: https://www.kaggle.com/datasets/cormac42/ww2-u-boats
+# 🇩🇪 WWII German U-boats Analysis Dashboard
 
-[Business Requirements](#business-requirements)
+An interactive data dashboard and analysis project that explores the operational efficiency, fate, and historical trends of German U-boats during World War II.
 
-# Hypotheses
+📊 Dataset: [Kaggle – WW2 U-boats](https://www.kaggle.com/datasets/cormac42/ww2-u-boats)  
+🔗 Additional Source: [Uboat.net](https://uboat.net/boats/listing.html)
 
-**1. The model that was built the most of, was it most effective during it´s time on duty?** <br>
-By calculating the days served and damage done by every model of uboat, I can analyse if they built most of the most effective model and use days served as a measuring of operating efficiency.<br><br>
-**2. Did the uboats that last until the end of the war be more effective than the ones that sunk during the war?** <br>
-Since Germany surrender at the beginning of May 1945, I can divide the uboats in 2 different categories (one for those who met their fate before April 1945 and another for those who met their fate after April 1945) and then see if the most effective submarines survived the war.<br><br>
-**3. Did the german loose more or less of their uboats after D-Day?** <br>
-By calculating the uboats build and the ones they lost by each month, I can see the percentage of their uboat fleet by each month. Did they loose more of their fleet before or after D-Day? <br><br>
-**4. Which area was the most dangerous for the german uboats? was there any time of the war that was effecting this area?** <br>
-By placing all the fates locations on a map, which area was the most dangerous for the uboats to be in? Was their any happening during the war that change this?
+---
 
-# Business Requirements
+## 🧪 Project Hypotheses
 
-### **Operational efficiency** 
+**1. Was the most-produced U-boat model also the most effective?**  
+By calculating the average days served and damage done (ships/tonnage sunk) by each U-boat model, we can evaluate if Germany mass-produced the most effective class of submarine.
 
-The purpose of this analysis is to evaluate the operational efficiency of each U-boat during it´s active service time in the water. Efficiency will be measured by analyzing the total tonnage sunk and the number of vessels sunk (both merchant and warships). This analysis aims to provide researchers and other interested parties with a clearer understanding of how successful different U-boat classes were in their operations, with a focus on merchant and warship sinkings.<br>
+**2. Were submarines that survived the war more effective than those sunk earlier?**  
+By categorizing U-boats based on their fate before or after May 1st, 1945, we can compare their operational efficiency.
+
+**3. Did Germany lose more U-boats before or after D-Day?**  
+By analyzing monthly losses relative to the total fleet size, we can identify if losses increased after the Allied invasion in June 1944.
+
+**4. Which geographic areas were the most dangerous for German U-boats, and did risk levels change over time?**  
+By mapping the fate locations of all U-boats, we can visualize risk zones and evaluate whether certain battles or campaigns shifted where U-boats were most vulnerable.
+
+---
+
+## 📌 Business Requirements
+
+### 1. Operational Efficiency Analysis
+
+**Goal:**  
+Evaluate how effectively each U-boat class performed during its service time using metrics such as ships sunk and total tonnage.
 
 **Requirements:**
-- Collect data on all U-boats operational service, including the number of vessels sunk and total tonnage.
-- Analyze and compare the efficiency of each U-boat class.
-- Present the results through statistics and visualizations showing efficiency over time and across different operations.
-- Provide the ability to compare performance across different U-boat classes and operation types.<br>
-<hr>
+- Collect data on operational service time, vessels sunk, and tonnage.
+- Compare U-boat classes on performance.
+- Visualize efficiency trends over time.
 
-### **Timebased analysis of losses**
+---
 
-The goal of this analysis is to develop a timeline that displays the number of U-boats lost or missing over time. 
+### 2. Time-Based Losses Analysis
+
+**Goal:**  
+Display how U-boat losses evolved throughout the war using a time-series.
 
 **Requirements:**
+- Categorize sunk/missing U-boats by date and cause.
+- Develop timeline visualizations to identify loss patterns.
 
-- Collect data on U-boat losses (sunk or missing) over time, categorized by date, location, and type of engagement.
-- Develop a timeline visualization that shows the trend of U-boat losses over the course of the war.
-<hr>
+---
 
-### **Analysis of Submarine Performance Trends**
+### 3. Submarine Class Performance Trends
 
-The goal of this analysis is to identify trends among submarines from different classes in order to understand which class experienced higher or lower loss rates. Analyse which u-boat class was most effective with its submarine operations.
+**Goal:**  
+Identify which U-boat classes had the highest and lowest loss and success rates.
 
-**Requirements:**<br>
-Gather data on submarines from all nations, including:
-- Number of submarines deployed.
-- Number of vessel sunk by type of u-boat.
-- Number of submarines lost or damaged.
+**Requirements:**
+- Collect data on submarines deployed, sunk, and damaged.
+- Analyze loss rates and success rates per class.
 
-**Perform a comparative analysis to calculate:**<br>
-**Loss rate:** The ratio of submarines lost or damaged to the total number of submarines commissioned for each nation.<br>
-**Success rate:** The ratio of vessels sunk to the total number of submarines deployed for each class.
-<hr>
+---
 
-### **Identify Where Most Submarines Were Sunk**
+### 4. Geographic Risk Zone Identification
 
-**Requirement:**<br>
-Analyze data to determine the geographical areas where the majority of submarines were sunk during World War II. This analysis should include identifying and visualizing the exact locations where submarines were sunk and clustering these locations to highlight the highest-risk zones.
+**Goal:**  
+Find and visualize high-risk areas where U-boats were most often sunk.
 
-- **Identify Locations:** <br>
-Gather information on the exact coordinates (latitude and longitude) of where submarines were sunk.<br>
-- **Cluster Analysis:** 
-<br>Perform a clustering analysis to group nearby sinking sites and identify high-intensity zones.<br>
-- **Risk Zones:**<br> 
-Visualize these high-intensity zones on a map to clearly display where the greatest risks for submarines were located.<br>
-- **Trend Analysis:**<br> 
-Analyze if any trends can be identified over time, showing shifts in submarine sinking patterns or risks based on different phases of the war.
-<hr>
+**Requirements:**
+- Add geolocation data (latitude, longitude) to fate events.
+- Perform clustering to highlight danger zones.
+- Visualize trends over time on interactive maps.
 
-### **Reporting and Visualization for the General Public**
-Provide a simple and engaging visualization for a broader audience interested in World War II maritime history. The visualizations should enhance public knowledge and interest in the historical significance of submarine operations and their impacts during the war.<br>
-**Requirement:**<br>
-Develop interactive dashboards and reports to visualize key insights from submarine analyses, including operational performance, losses, and geographical trends. The dashboards should be user-friendly and designed for a non-technical audience.
+---
 
-**Objectives:**<br>
-- **Interactive Dashboards:** <br>Create intuitive dashboards that allow users to explore data related to submarine operations, including filters for different time periods, submarine classes, and geographical areas.<br>
-- **Data Visualization:**<br> Utilize charts, maps, and graphs to effectively present data on submarine performance, losses, and risk zones in a visually appealing manner.<br>
-- **Accessibility:**<br> Ensure that the dashboards are designed to be accessible to individuals with varying levels of technical expertise, making the information approachable and informative for all users.<br>
-<hr>
+### 5. Public Visualization & Engagement
 
-### Target Audience:
-All these analyses will be used by researchers, historians, and others interested in naval history and warfare to understand the effectiveness of U-boats during their operations in WW2.
-<hr>
+**Goal:**  
+Make complex data accessible and engaging to the general public.
+
+**Requirements:**
+- Develop interactive dashboards with filters and maps.
+- Create intuitive and non-technical visualizations.
+- Ensure accessibility for users of all backgrounds.
+
+---
+
+## 👥 Target Audience
+
+This dashboard is designed for:
+- Researchers & historians
+- Military and naval enthusiasts
+- Educators and students
+- General public interested in WWII maritime history
+
+---
+
+## 🛠️ Tech Stack
+
+- **Python**
+- **Streamlit** – Web dashboard
+- **SQLite** – Lightweight database
+- **Pandas** – Data analysis
+- **Plotly & PyDeck** – Maps and visualizations
+- **HTML/CSS** – Enhanced styling inside Streamlit markdowns
+
+---
