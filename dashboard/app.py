@@ -69,5 +69,5 @@ elif menu == "Statistics":
 
 # --- ABOUT PAGE ---
 elif menu == "About this project":
-    show_about(),
+    show_about()
     show_raw_data()
