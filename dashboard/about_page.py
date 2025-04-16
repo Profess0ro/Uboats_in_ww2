@@ -27,6 +27,6 @@ def show_about():
                 <li><a href="https://www.linkedin.com/in/freddy-larsson-4082752ab/" target="_blank" style="text-decoration: none; color: #0a66c2;">💼 LinkedIn</a></li>
                 <li>📧 Email: <a href="mailto:professoro88@gmail.com" style="text-decoration: none; color: #333;">professoro88@gmail.com</a></li>
             </ul>
-            <img src="../images/freddy.jpg" alt="Freddy Larsson" style="max-width: 200px; margin-top: 1rem; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+            <img src="images/freddy.jpg" alt="Freddy Larsson" style="max-width: 200px; margin-top: 1rem; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
         </div>
         """, unsafe_allow_html=True)
