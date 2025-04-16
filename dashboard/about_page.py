@@ -2,10 +2,13 @@ import streamlit as st
 import sqlite3
 import pandas as pd
 
+# Function to establish a connection to the SQLite database
 def get_connection():
     return sqlite3.connect("dashboard/data/uboats.db", check_same_thread=False)
 
+# Function to display the 'About' page, which includes project methodology and raw data
 def show_about():
+    # Displaying the methodology and workflow of the project
     st.markdown("""
                 <div style="background-color: rgba(255,255,255,0.8); padding: 1rem; border-radius: 10px; text-align: left;">
                     <h4>🛠️ Project Methodology & Workflow</h4>
@@ -22,13 +25,18 @@ def show_about():
                 </div>
                 """, unsafe_allow_html=True)
 
+# Function to display the raw data used in the project
 def show_raw_data():
     st.subheader("📊 Raw data")
     
+    # Establishing database connection and retrieving raw data from the 'UboatsRaw' table
     conn = get_connection()
     df = pd.read_sql_query("SELECT * FROM UboatsRaw", conn)
 
+    # Displaying the raw data as a table in Streamlit
     st.dataframe(df, use_container_width=True)
+
+    # Displaying a description of the dataset and the source of the data
     st.markdown("""
         <div style="background-color: rgba(255,255,255,0.8); padding: 1rem; border-radius: 10px;">
             This is the raw dataset that forms the foundation of this project.<br>
@@ -37,6 +45,7 @@ def show_raw_data():
         </div>
         """, unsafe_allow_html=True)
     
+    # Displaying contact information
     st.markdown("""
         <div style="background-color: rgba(255,255,255,0.9); padding: 1.5rem; border-radius: 12px; text-align: left; font-family: sans-serif;">
             <h3 style="margin-top: 0;">📬 Contact</h3>

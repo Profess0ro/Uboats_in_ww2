@@ -1,3 +1,4 @@
+# Query to find the U-boats with the most ships sunk
 def most_sunked_ships():
     return """
     SELECT 
@@ -13,6 +14,8 @@ def most_sunked_ships():
     ORDER BY EfficiencyPerUboat.TotalShipsSunked DESC
     """
 
+
+# Query to find the most effective U-boats based on average days per ship sunk
 def effective_boats():
     return """
     SELECT 
@@ -30,6 +33,8 @@ def effective_boats():
     ORDER BY AverageDayPerShip
     """
 
+
+# Query to find the U-boats with the longest service time
 def longest_serving_time():
     return """
     SELECT
@@ -46,6 +51,8 @@ def longest_serving_time():
     ORDER BY Days_in_service DESC
     """
 
+
+# Query to calculate average service time by U-boat type
 def type_longest_serving_days():
     return """
     SELECT 
