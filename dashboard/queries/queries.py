@@ -58,8 +58,7 @@ def type_longest_serving_days():
     SELECT 
         TypeOfUboat, 
         ROUND(AVG(Days_in_service), 2) AS AvgDaysInService, 
-        ROUND(AVG(Years_in_service), 2) AS AvgYearsInService, 
-        WarOutCome
+        ROUND(AVG(Years_in_service), 2) AS AvgYearsInService
     FROM SummaryUboats
     GROUP BY TypeOfUboat
     ORDER BY AvgDaysInService DESC
