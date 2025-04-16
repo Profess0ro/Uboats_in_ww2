@@ -1,4 +1,9 @@
 import streamlit as st
+import sqlite3
+import pandas as pd
+
+def get_connection():
+    return sqlite3.connect("dashboard/data/uboats.db", check_same_thread=False)
 
 def show_about():
     st.markdown("""
@@ -17,6 +22,20 @@ def show_about():
                 </div>
                 """, unsafe_allow_html=True)
 
+def show_raw_data():
+    st.subheader("📊 Overview of U-boats")
+    
+    conn = get_connection()
+    df = pd.read_sql_query("SELECT * FROM UboatsRaw", conn)
+
+    st.dataframe(df, use_container_width=True)
+    st.markdown("""
+        <div style="background-color: rgba(255,255,255,0.8); padding: 1rem; border-radius: 10px;">
+            This is the raw dataset that forms the foundation of this project.<br>
+            The data was collected from the following source:<br><br>
+            📊 <a href="https://www.kaggle.com/datasets/cormac42/ww2-u-boats" target="_blank">WW2 U-boats on Kaggle</a>
+        </div>
+        """, unsafe_allow_html=True)
     
     st.markdown("""
         <div style="background-color: rgba(255,255,255,0.9); padding: 1.5rem; border-radius: 12px; text-align: left; font-family: sans-serif;">
