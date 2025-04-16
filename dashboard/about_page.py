@@ -19,14 +19,12 @@ def show_about():
 
     
     st.markdown("""
-        <div style="background-color: rgba(255,255,255,0.9); padding: 1.5rem; border-radius: 12px; text-align: left; font-family: sans-serif;">
-            <h3 style="margin-top: 0;">📬 Contact</h3>
-            <p>If you would like to get in touch, feel free to reach out via the following platforms:</p>
-            <ul style="list-style: none; padding-left: 0;">
-                <li><a href="https://github.com/Profess0ro" target="_blank" style="text-decoration: none; color: #0366d6;">🐙 GitHub</a></li>
-                <li><a href="https://www.linkedin.com/in/freddy-larsson-4082752ab/" target="_blank" style="text-decoration: none; color: #0a66c2;">💼 LinkedIn</a></li>
-                <li>📧 Email: <a href="mailto:professoro88@gmail.com" style="text-decoration: none; color: #333;">professoro88@gmail.com</a></li>
-            </ul>
-            <img src="dashboard/images/freddy.jpg" alt="Freddy Larsson" style="max-width: 200px; margin-top: 1rem; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+        <div style="background-color: rgba(255,255,255,0.8); padding: 1rem; border-radius: 10px; text-align: left;">
+        If you would like to contact me, feel free to reach out to me at these platforms:<br>
+        <a href="https://github.com/Profess0ro" target="_blank">Github</a><br>
+        <a href="https://www.linkedin.com/in/freddy-larsson-4082752ab/" target="_blank">LinkedIn</a><br>
+        Email: professoro88@gmail.com<br>
         </div>
         """, unsafe_allow_html=True)
+
+    st.image("images/freddy.jpg", caption="Freddy Larsson", width=200)
