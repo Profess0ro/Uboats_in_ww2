@@ -7,7 +7,7 @@ from data_page import show_data
 from map_page import show_map
 from timeline_page import show_timeline
 from statistics_page import show_statistics
-from about_page import show_about
+from about_page import show_about, show_raw_data
 
 # --- PAGE CONFIG ---
 st.set_page_config(page_title="WWII U-boat Dashboard", layout="wide")
@@ -69,4 +69,5 @@ elif menu == "Statistics":
 
 # --- ABOUT PAGE ---
 elif menu == "About this project":
-    show_about()
+    show_about(),
+    show_raw_data()
